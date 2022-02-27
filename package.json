@@ -1,0 +1,53 @@
+{
+  "name": "vue2-webpack5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "webpack-dev-server --config webpack/webpack.dev.js",
+    "build": "NODE_ENV=production webpack --config webpack/webpack.production.js",
+    "analyzer": "NODE_ENV=production webpack --config webpack/webpack.analyzer.js"
+  },
+  "author": "zhanghuan",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "lodash-es": "^4.17.21",
+    "vue": "2.6.14",
+    "vue-router": "3.5.3",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@vue/cli-plugin-babel": "^5.0.1",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "compression-webpack-plugin": "^9.2.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "css-loader": "^6.6.0",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "eslint": "^8.9.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "node-sass": "^7.0.1",
+    "postcss": "^8.4.6",
+    "postcss-loader": "^6.2.1",
+    "postcss-preset-env": "^7.4.1",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.69.1",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4",
+    "webpack-merge": "^5.8.0"
+  }
+}
