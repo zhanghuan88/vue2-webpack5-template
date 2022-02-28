@@ -15,7 +15,7 @@ module.exports = merge(webpackCommonConfig, {
     module: {
         rules: [
             {
-                oneOf:[
+                oneOf: [
                     {
                         test: /\.css$/,
                         use: [
