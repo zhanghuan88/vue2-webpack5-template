@@ -79,14 +79,18 @@ module.exports = merge(webpackCommonConfig, {
         })
     ],
     optimization: {
-        concatenateModules:true,
         moduleIds: "deterministic",
         runtimeChunk: true,
         minimize: true,
         minimizer: [
             new CssMinimizerPlugin(),
             new TerserPlugin({
-                extractComments:false,
+                terserOptions: {
+                    format: {
+                        comments: false,
+                    },
+                },
+                extractComments: false,
             })
 
 
