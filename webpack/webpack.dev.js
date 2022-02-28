@@ -8,25 +8,27 @@ module.exports = merge(webpackCommonConfig, {
     devtool: "eval-cheap-module-source-map",
     // devtool:false,
     module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    'postcss-loader'
-                ]
-            }, {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    "style-loader",
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader',
+        rules: [{
+            oneOf: [
+                {
+                    test: /\.css$/,
+                    use: [
+                        "style-loader",
+                        "css-loader",
+                        'postcss-loader'
+                    ]
+                }, {
+                    test: /\.s[ac]ss$/i,
+                    use: [
+                        "style-loader",
+                        'css-loader',
+                        'postcss-loader',
+                        'sass-loader',
 
-                ],
-            },
-
+                    ],
+                },
+            ]
+        }
         ]
     },
     plugins: [

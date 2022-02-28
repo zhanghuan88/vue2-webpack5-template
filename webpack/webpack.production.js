@@ -15,46 +15,52 @@ module.exports = merge(webpackCommonConfig, {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
+                oneOf:[
                     {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: false
-                        }
+                        test: /\.css$/,
+                        use: [
+                            MiniCssExtractPlugin.loader,
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    sourceMap: false
+                                }
+                            },
+                            {
+                                loader: 'postcss-loader',
+                                options: {
+                                    sourceMap: false
+                                }
+                            },
+                        ]
                     },
                     {
-                        loader: 'postcss-loader',
-                        options: {
-                            sourceMap: false
-                        }
+                        test: /\.s[ac]ss$/i,
+                        use: [
+                            MiniCssExtractPlugin.loader,
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    sourceMap: false
+                                }
+                            },
+                            {
+                                loader: 'postcss-loader',
+                                options: {
+                                    sourceMap: false
+                                }
+                            },
+                            {
+                                loader: 'sass-loader',
+                                options: {
+                                    sourceMap: false
+                                }
+                            }
+                        ],
                     },
-                ]
-            }, {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: false
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            sourceMap: false
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: false
-                        }
-                    }
                 ],
             },
+
         ]
     },
     plugins: [
