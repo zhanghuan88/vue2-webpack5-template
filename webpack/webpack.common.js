@@ -8,7 +8,6 @@ module.exports = {
     entry: {
         index: "./src/index.js",
     },
-    context: process.cwd(),
     output: {
         filename: "js/[name].[contenthash:8].js",
         path: path.resolve("dist"),
