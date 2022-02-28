@@ -7,6 +7,8 @@ const chalk = require("chalk");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin")
 const CompressionPlugin = require("compression-webpack-plugin");
+const PurgeCSSPlugin = require("purgecss-webpack-plugin");
+const path = require("./path");
 
 module.exports = merge(webpackCommonConfig, {
     mode: 'production',
@@ -76,7 +78,11 @@ module.exports = merge(webpackCommonConfig, {
             filename: "[path][base].gz",
             threshold: 10240,
             minRatio: 0.8,
-        })
+        }),
+        // CSS Tree Shaking
+        new PurgeCSSPlugin({
+            paths: glob.sync(`${path.resolve("src")}/**/*`, { nodir: true }),
+        }),
     ],
     optimization: {
         moduleIds: "deterministic",
