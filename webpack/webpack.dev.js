@@ -46,6 +46,7 @@ module.exports = merge(webpackCommonConfig, {
         host: "localhost",
         historyApiFallback: true, // history路径在刷新出错时重定向开启
         client: {
+            logging: 'warn',
             overlay: {
                 errors: true,
                 warnings: false,
