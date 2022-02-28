@@ -12,7 +12,7 @@ module.exports = {
         filename: "js/[name].[contenthash:8].js",
         path: path.resolve("dist"),
     },
-    cache:{
+    cache: {
         type: 'filesystem',
     },
     externals: {

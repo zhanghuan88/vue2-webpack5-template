@@ -24,7 +24,6 @@ module.exports = merge(webpackCommonConfig, {
                         'css-loader',
                         'postcss-loader',
                         'sass-loader',
-
                     ],
                 },
             ]
@@ -44,7 +43,7 @@ module.exports = merge(webpackCommonConfig, {
         port: 8082,
         compress: true,
         host: "localhost",
-        historyApiFallback: true, // history路径在刷新出错时重定向开启
+        historyApiFallback: true,
         client: {
             logging: 'warn',
             overlay: {
