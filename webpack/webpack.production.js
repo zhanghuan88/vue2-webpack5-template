@@ -9,6 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin")
 const CompressionPlugin = require("compression-webpack-plugin");
 const PurgeCSSPlugin = require("purgecss-webpack-plugin");
 const path = require("./path");
+const glob = require('glob')
 
 module.exports = merge(webpackCommonConfig, {
     mode: 'production',
