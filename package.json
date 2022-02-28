@@ -21,7 +21,6 @@
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
-    "@vue/cli-plugin-babel": "^5.0.1",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "compression-webpack-plugin": "^9.2.0",
