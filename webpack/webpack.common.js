@@ -32,7 +32,7 @@ module.exports = {
                 test: /\.(png|gif|jpe?g|svg)$/,
                 type: 'asset', // webpack5使用内置静态资源模块，且不指定具体，根据以下规则使用
                 generator: {
-                    filename: 'img/[name].[hash:6][ext]' // ext本身会附带点，放入img目录下
+                    filename: 'img/[name].[contenthash:6][ext]' // ext本身会附带点，放入img目录下
                 },
                 parser: {
                     dataUrlCondition: {
@@ -44,7 +44,7 @@ module.exports = {
                 test: /\.(ttf|woff2?|eot)$/,
                 type: 'asset/resource', // 指定静态资源类复制
                 generator: {
-                    filename: 'font/[name].[hash:6][ext]' // 放入font目录下
+                    filename: 'font/[name].[contenthash:6][ext]' // 放入font目录下
                 }
             },
             {

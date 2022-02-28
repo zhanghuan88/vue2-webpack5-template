@@ -59,7 +59,7 @@ module.exports = merge(webpackCommonConfig, {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "css/[name]_[hash].css",
+            filename: "css/[name]_[contenthash:8].css",
         }),
         new CleanWebpackPlugin(),
         // 进度条
@@ -78,16 +78,8 @@ module.exports = merge(webpackCommonConfig, {
         runtimeChunk: true,
         minimize: true,
         minimizer: [
-            new CssMinimizerPlugin({
-                exclude: 'node_modules'
-            }),
+            new CssMinimizerPlugin(),
             new TerserPlugin({
-                parallel: true, // 可省略，默认开启并行
-                terserOptions: {
-                    toplevel: true, // 最高级别，删除无用代码
-                    ie8: true,
-                    safari10: true,
-                },
                 extractComments:false,
             })
 
