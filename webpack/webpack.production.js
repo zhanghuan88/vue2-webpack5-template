@@ -80,10 +80,10 @@ module.exports = merge(webpackCommonConfig, {
             threshold: 10240,
             minRatio: 0.8,
         }),
-        // CSS Tree Shaking
-        new PurgeCSSPlugin({
-            paths: glob.sync(`${path.resolve("src")}/**/*`, {nodir: true}),
-        }),
+        // CSS Tree Shaking 暂时有问题
+        // new PurgeCSSPlugin({
+        //     paths: glob.sync(`${path.resolve("src")}/**/*`, {nodir: true}),
+        // }),
     ],
     optimization: {
         moduleIds: "deterministic",
