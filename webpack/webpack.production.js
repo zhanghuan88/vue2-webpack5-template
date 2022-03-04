@@ -81,9 +81,9 @@ module.exports = merge(webpackCommonConfig, {
             minRatio: 0.8,
         }),
         // CSS Tree Shaking
-        new PurgeCSSPlugin({
-            paths: glob.sync(`${path.resolve("src")}/**/*`, {nodir: true}),
-        }),
+        // new PurgeCSSPlugin({
+        //     paths: glob.sync(`${path.resolve("src")}/**/*`, {nodir: true}),
+        // }),
     ],
     optimization: {
         moduleIds: "deterministic",
