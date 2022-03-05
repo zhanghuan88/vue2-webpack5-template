@@ -41,6 +41,7 @@ module.exports = merge(webpackCommonConfig, {
     ],
     devServer: {
         port: 8082,
+        hot:true,
         compress: true,
         host: "localhost",
         historyApiFallback: true,
