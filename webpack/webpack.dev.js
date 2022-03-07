@@ -44,7 +44,7 @@ module.exports = merge(webpackCommonConfig, {
         hot:true,
         compress: true,
         host: "localhost",
-        historyApiFallback: true,
+        historyApiFallback: true,//history路由错误问题
         client: {
             logging: 'warn',
             overlay: {
