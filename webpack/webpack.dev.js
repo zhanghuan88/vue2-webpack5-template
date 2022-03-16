@@ -1,6 +1,5 @@
 const {merge} = require("webpack-merge")
 const webpackCommonConfig = require("./webpack.common.js")
-const {HotModuleReplacementPlugin} = require("webpack");
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = merge(webpackCommonConfig, {
@@ -31,7 +30,6 @@ module.exports = merge(webpackCommonConfig, {
         ]
     },
     plugins: [
-        new HotModuleReplacementPlugin(),
         new ESLintPlugin({
             fix: true, /* 自动帮助修复 */
             extensions: ['js', 'json', 'coffee', 'vue'],

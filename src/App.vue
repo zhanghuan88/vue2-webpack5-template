@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    1212
   </div>
 </template>
 
@@ -9,13 +10,11 @@ export default {
   name: 'App',
   components: {},
   data() {
-    return {
-
-    };
+    return {};
   },
+  computed: {},
   watch: {},
-  methods: {},
-  computed: {}
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>
