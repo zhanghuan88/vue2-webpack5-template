@@ -7,7 +7,11 @@ const chalk = require("chalk");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const {DefinePlugin} = require("webpack");
+const {readEnv} = require('./utils');
 
+//读取环境变量
+const config = readEnv("./.env.production");
 module.exports = merge(webpackCommonConfig, {
   mode: 'production',
   // devtool: "cheap-module-source-map",
@@ -36,25 +40,28 @@ module.exports = merge(webpackCommonConfig, {
               sourceMap: false
             }
           }
-        ],
+        ]
       }
-
     ]
   },
   plugins: [
+    new DefinePlugin({
+      BASE_URL: JSON.stringify("./"),
+      'process.env':config
+    }),
     new MiniCssExtractPlugin({
-      filename: "css/[name]_[contenthash:8].css",
+      filename: "css/[name]_[contenthash:8].css"
     }),
     new CleanWebpackPlugin(),
     // 进度条
     new ProgressBarPlugin({
-      format: `  :msg [:bar] ${chalk.green.bold(":percent")} (:elapsed s)`,
+      format: `  :msg [:bar] ${chalk.green.bold(":percent")} (:elapsed s)`
     }),
-    new CompressionPlugin({
+    ...process.env.APP_GZIP === "ON" ? [new CompressionPlugin({
       filename: "[path][base].gz",
       threshold: 10240,
-      minRatio: 0.8,
-    }),
+      minRatio: 0.8
+    })] : []
   ],
   optimization: {
     moduleIds: "deterministic",
@@ -65,18 +72,17 @@ module.exports = merge(webpackCommonConfig, {
       new TerserPlugin({
         terserOptions: {
           format: {
-            comments: false,
-          },
+            comments: false
+          }
         },
-        extractComments: false,
+        extractComments: false
       })
-
 
     ],
     splitChunks: {
-      chunks: 'all',
-    },
+      chunks: 'all'
+    }
 
-  },
+  }
 
 });
