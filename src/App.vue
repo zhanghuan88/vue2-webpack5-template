@@ -9,6 +9,7 @@ export default {
   name: 'App',
   components: {},
   data() {
+    console.log(eval("var a= 1+1;console.log(a)"));
     return {};
   },
   computed: {},
