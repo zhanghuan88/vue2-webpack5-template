@@ -54,6 +54,8 @@
     "webpack-merge": "^5.8.0"
   },
   "lint-staged": {
-    "src/**/*.{js,vue}": ["eslint --fix"]
+    "src/**/*.{js,vue}": [
+      "eslint --fix"
+    ]
   }
 }
