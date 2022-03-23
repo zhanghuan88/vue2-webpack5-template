@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "webpack serve --config webpack/webpack.dev.js",
     "build": "webpack --config webpack/webpack.prod.js",
-    "analyzer": "webpack --config webpack/webpack.analyzer.js"
+    "analyzer": "webpack --config webpack/webpack.analyzer.js",
+    "prepare": "husky install"
   },
   "author": "zhanghuan",
   "license": "ISC",
@@ -52,12 +53,7 @@
     "webpack-cli": "^4.9.2",
     "webpack-merge": "^5.8.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "src/**/*.{js,vue}": ["eslint --fix", "git add"]
+    "src/**/*.{js,vue}": ["eslint --fix"]
   }
 }
