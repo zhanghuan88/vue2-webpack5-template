@@ -1,5 +1,6 @@
 const {merge} = require("webpack-merge");
-const webpackCommonConfig = require("./webpack.common.js");
+const {readEnv} = require('./utils');
+const config = readEnv("./.env.production");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -8,10 +9,9 @@ const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const {DefinePlugin} = require("webpack");
-const {readEnv} = require('./utils');
+const webpackCommonConfig = require("./webpack.common.js");
 
 //读取环境变量
-const config = readEnv("./.env.production");
 module.exports = merge(webpackCommonConfig, {
   mode: 'production',
   // devtool: "cheap-module-source-map",
@@ -47,7 +47,7 @@ module.exports = merge(webpackCommonConfig, {
   plugins: [
     new DefinePlugin({
       BASE_URL: JSON.stringify("./"),
-      'process.env':config
+      'process.env': config
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name]_[contenthash:8].css"

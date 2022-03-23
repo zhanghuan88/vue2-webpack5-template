@@ -1,12 +1,12 @@
 const {merge} = require("webpack-merge");
-const webpackCommonConfig = require("./webpack.common.js");
+const {readEnv} = require('./utils');
+const config = readEnv("./.env.development");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const {DefinePlugin} = require("webpack");
-const {readEnv} = require('./utils');
+const webpackCommonConfig = require("./webpack.common.js");
+
 
 //读取环境变量
-const config = readEnv("./.env.development");
-
 module.exports = merge(webpackCommonConfig, {
   mode: "development",
   devtool: "eval-cheap-module-source-map",

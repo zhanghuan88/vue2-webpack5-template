@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel = "icon" href = "<%= BASE_URL %>favicon.ico" >
     <title><%= process.env.APP_TITLE %></title>
+  <% for (var i in htmlWebpackPlugin.options.cdnConfig && htmlWebpackPlugin.options.cdnConfig.css) { %>
+  <!-- 使用CDN的CSS文件 -->
+  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet">
+  <% } %>
 </head>
 <body>
 <noscript>
@@ -13,10 +17,9 @@
     </strong>
 </noscript>
 <div id="app">正在渲染,请稍等...</div>
-<script defer="defer" src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js" crossorigin="anonymous"></script>
-<script defer="defer" src="https://cdn.staticfile.org/axios/0.26.0/axios.min.js" crossorigin="anonymous"></script>
-<script defer="defer" src="https://cdn.staticfile.org/vue-router/3.5.3/vue-router.min.js" crossorigin="anonymous"></script>
-<script defer="defer" src="https://cdn.staticfile.org/vuex/3.6.2/vuex.min.js" crossorigin="anonymous"></script>
 
+<% for (var i in htmlWebpackPlugin.options.cdnConfig && htmlWebpackPlugin.options.cdnConfig.js) { %>
+<script src="<%= htmlWebpackPlugin.options.cdnConfig.js[i] %>"></script>
+<% } %>
 </body>
 </html>

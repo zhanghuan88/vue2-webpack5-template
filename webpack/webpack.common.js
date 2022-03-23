@@ -1,29 +1,25 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("./utils");
 const {VueLoaderPlugin} = require("vue-loader");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const {getExternals, getCdnConfig, resolve} = require('./utils');
+
 module.exports = {
   entry: {
-    index: "./src/index.js",
+    index: "./src/index.js"
   },
   output: {
     filename: "js/[name].[hash:8].js",
-    path: path.resolve("dist"),
+    path: resolve("dist")
   },
   cache: {
-    type: 'filesystem',
+    type: 'filesystem'
   },
-  externals: {
-    'vue': 'Vue',
-    'vue-router': 'VueRouter',
-    'vuex': 'Vuex',
-    'axios': 'axios',
-  },
+  externals: getExternals(),
   module: {
     rules: [
       {
         test: /\.js$/,
-        include: path.resolve("src"),
+        include: resolve("src"),
         use: ['babel-loader']
       },
       {
@@ -48,43 +44,42 @@ module.exports = {
       {
         test: /\.vue$/,
         use: ["vue-loader"]
-      },
-
+      }
 
     ]
   },
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve("public/index.html"),
+      template: resolve("public/index.html"),
       inject: "body",
       minify: {
         removeComments: true, // 移除HTML中的注释
         collapseWhitespace: true, // 删除空符与换符
         minifyCSS: true // 压缩内联css
-      }
+      },
+      cdnConfig: getCdnConfig()
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve("public"),
-          to: path.resolve("dist"),
+          from: resolve("public"),
+          to: resolve("dist"),
           globOptions: {
             dot: true,
             gitignore: true,
-            ignore: ["**/index.html"],
-          },
+            ignore: ["**/index.html"]
+          }
         }
       ]
-    }),
-
+    })
   ],
   resolve: {
     extensions: [".vue", ".js", ".json"],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      "@": path.resolve("src"),
+      "@": resolve("src")
     }
-  },
+  }
 
 };
