@@ -8,7 +8,7 @@ module.exports = {
     index: "./src/index.js"
   },
   output: {
-    filename: "js/[name].[hash:8].js",
+    filename: "js/[name].[fullhash:8].js",
     path: resolve("dist")
   },
   cache: {
@@ -26,7 +26,7 @@ module.exports = {
         test: /\.(png|gif|jpe?g|svg)$/,
         type: 'asset', // webpack5使用内置静态资源模块，且不指定具体，根据以下规则使用
         generator: {
-          filename: 'img/[name].[hash:6][ext]' // ext本身会附带点，放入img目录下
+          filename: 'img/[name][ext]' // ext本身会附带点，放入img目录下
         },
         parser: {
           dataUrlCondition: {
