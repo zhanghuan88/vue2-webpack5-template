@@ -68,7 +68,16 @@ module.exports = merge(webpackCommonConfig, {
     runtimeChunk: true,
     minimize: true,
     minimizer: [
-      new CssMinimizerPlugin(),
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            "default",
+            {
+              discardComments: {removeAll: true},
+            },
+          ],
+        }
+      }),
       new TerserPlugin({
         terserOptions: {
           format: {
