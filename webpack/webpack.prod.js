@@ -1,5 +1,5 @@
 const {merge} = require("webpack-merge");
-const {readEnv} = require('./utils');
+const {readEnv, getConditionalLoader} = require('./utils');
 const config = readEnv("./.env.production");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -39,7 +39,8 @@ module.exports = merge(webpackCommonConfig, {
             options: {
               sourceMap: false
             }
-          }
+          },
+          getConditionalLoader()
         ]
       }
     ]

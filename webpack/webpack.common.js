@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {VueLoaderPlugin} = require("vue-loader");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const {getExternals, getCdnConfig, resolve} = require('./utils');
+const {getExternals, getCdnConfig, resolve, getConditionalLoader} = require('./utils');
 
 module.exports = {
   entry: {
@@ -23,7 +23,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: resolve("src"),
-        use: ['babel-loader']
+        use: ['babel-loader',getConditionalLoader()]
       },
       {
         test: /\.(png|gif|jpe?g|svg)$/,
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        use: ["vue-loader"]
+        use: ["vue-loader",getConditionalLoader()]
       }
 
     ]

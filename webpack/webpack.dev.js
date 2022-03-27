@@ -1,5 +1,5 @@
 const {merge} = require("webpack-merge");
-const {readEnv} = require('./utils');
+const {readEnv, getConditionalLoader} = require('./utils');
 const config = readEnv("./.env.development");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const {DefinePlugin} = require("webpack");
@@ -18,7 +18,8 @@ module.exports = merge(webpackCommonConfig, {
         "style-loader",
         'css-loader',
         'postcss-loader',
-        'sass-loader'
+        'sass-loader',
+        getConditionalLoader()
       ]
     }]
   },

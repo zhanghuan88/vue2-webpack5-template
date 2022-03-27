@@ -5,3 +5,6 @@ dotenv动态读取环境变量,生产环境读取.env.production环境变量,开
 + 根据环境变量动态配置CDN,读取dependencies.cdn.js文件
 ---
 git hook 增加eslint校验
+
+---
+增加webpack条件编译 js-conditional-compile-loader
