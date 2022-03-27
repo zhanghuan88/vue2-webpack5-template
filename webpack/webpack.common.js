@@ -12,7 +12,10 @@ module.exports = {
     path: resolve("dist")
   },
   cache: {
-    type: 'filesystem'
+    type: 'filesystem',
+    buildDependencies: {
+      config: [resolve(".env.development"), resolve(".env.production")],
+    },
   },
   externals: getExternals(),
   module: {
