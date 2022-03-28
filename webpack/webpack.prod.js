@@ -90,7 +90,22 @@ module.exports = merge(webpackCommonConfig, {
 
     ],
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
+      minChunks: 3,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 5,
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          name: 'vendor',
+          enforce: true,
+        },
+        main: {
+          test: /src/,
+          name: 'main',
+          enforce: true,
+        }
+      }
     }
 
   }
