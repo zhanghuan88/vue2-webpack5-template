@@ -23,7 +23,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: resolve("src"),
-        use: ['babel-loader']
+        use: ['babel-loader',getConditionalLoader()]
       },
       {
         test: /\.(png|gif|jpe?g|svg)$/,
