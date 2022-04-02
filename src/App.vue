@@ -9,7 +9,6 @@ export default {
   name: 'App',
   components: {},
   data() {
-    alert("111")
     return {};
   },
   computed: {},
