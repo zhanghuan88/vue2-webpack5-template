@@ -7,4 +7,5 @@ const app = new Vue({
     render: h => h(App),
     store
 });
+alert("11")
 app.$mount('#app');
