@@ -7,7 +7,12 @@
     <title><%= process.env.APP_TITLE %></title>
   <% for (var i in htmlWebpackPlugin.options.cdnConfig && htmlWebpackPlugin.options.cdnConfig.css) { %>
   <!-- 使用CDN的CSS文件 -->
-  <link href="<%= htmlWebpackPlugin.options.cdnConfig.css[i] %>" rel="stylesheet">
+  <link href="<%= htmlWebpackPlugin.options.cdnConfig.css[i] %>" rel="external nofollow preload" as="style">
+  <link href="<%= htmlWebpackPlugin.options.cdnConfig.css[i] %>" rel="external nofollow stylesheet">
+  <% } %>
+  <% for (var i in htmlWebpackPlugin.options.cdnConfig && htmlWebpackPlugin.options.cdnConfig.js) { %>
+  <!-- 使用CDN的JS文件 -->
+  <link href="<%= htmlWebpackPlugin.options.cdnConfig.js[i] %>" rel="external nofollow preload" as="script">
   <% } %>
 </head>
 <body>
