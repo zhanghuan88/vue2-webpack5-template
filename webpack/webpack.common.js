@@ -5,7 +5,7 @@ const {getExternals, getCdnConfig, resolve, getConditionalLoader} = require('./u
 
 module.exports = {
   entry: {
-    index: "./src/index.js"
+    index: "./src/mian.js"
   },
   output: {
     filename: "js/[name].[fullhash:8].js",
