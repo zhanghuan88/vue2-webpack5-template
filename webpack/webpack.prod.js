@@ -54,7 +54,10 @@ module.exports = merge(webpackCommonConfig, {
     }),
     new CleanWebpackPlugin(),
     // 进度条
-    new WebpackBar(),
+    new WebpackBar({
+      reporters: ['fancy', 'profile'],
+      profile: true,
+    }),
     ...process.env.APP_GZIP === "ON" ? [new CompressionPlugin({
       filename: "[path][base].gz",
       threshold: 10240,
