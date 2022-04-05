@@ -97,7 +97,8 @@ module.exports = merge(webpackCommonConfig, {
       cacheGroups: {
         vendor: {
           test: /node_modules/,
-          name: 'vendor',
+          chunks: "all",
+          priority: 10, // 优先级
           enforce: true,
         },
         main: {
