@@ -25,7 +25,7 @@ module.exports = merge(webpackCommonConfig, {
   },
   plugins: [
     new DefinePlugin({
-      BASE_URL: JSON.stringify("./"),
+      BASE_URL: JSON.stringify("/"),
       'process.env': config
     }),
     new ESLintPlugin({
