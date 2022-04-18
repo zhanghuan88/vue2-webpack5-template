@@ -3,13 +3,14 @@ module.exports = {
     "browser": true,
     "es2022": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:vue/essential"
-  ],
   "globals": {
-    "process": true
+    "process": true,
+    "require": true
   },
+  "extends": [
+    "plugin:vue/essential",
+    "eslint:recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
@@ -18,6 +19,12 @@ module.exports = {
     "vue"
   ],
   "rules": {
+    //两个空格缩进
+    "indent": ["error", 2],
+    //强制数组元素间出现换行
+    "array-element-newline": ["error", {"multiline": true}],
+    //在数组开括号后和闭括号前强制换行
+    "array-bracket-newline": 2,
     // 数组的 map、filter、sort 等方法，回调函数必须有返回值
     "array-callback-return": 2,
     // 禁止函数 if ... else if ... else 的复杂度超过 20
@@ -39,7 +46,7 @@ module.exports = {
       }
     ],
     // 禁止 alert，提醒开发者，上线时要去掉
-    "no-alert": 1,
+    "no-alert": 2,
     // 禁止使用 console，提醒开发者，上线时要去掉
     "no-console": 1,
     // 禁止 debugger 语句，提醒开发者，上线时要去掉
@@ -114,8 +121,9 @@ module.exports = {
     "vue/attributes-order": 2,
     "vue/order-in-components": 2,
     "vue/this-in-template": 2,
+    "vue/multi-word-component-names": 0,
     "vue/script-indent": [2, 2, {
       "switchCase": 1
     }]
   }
-};
+}
