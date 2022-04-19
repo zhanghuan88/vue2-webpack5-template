@@ -100,9 +100,7 @@ module.exports = {
       "words": true,
       "nonwords": false
     }],
-    "spaced-comment": [2, "always", {
-      "markers": ["global", "globals", "eslint", "eslint-disable", "*package", "!", ","]
-    }],
+    "spaced-comment": [2, "always"],
     "switch-colon-spacing": [2, {
       "after": true,
       "before": false
