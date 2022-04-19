@@ -20,7 +20,7 @@ module.exports = {
   ],
   "rules": {
     //两个空格缩进
-    "indent": ["error", 2],
+    "indent": ["error", 2,{ "SwitchCase": 1 }],
     //强制数组元素间出现换行
     "array-element-newline": ["error", {"multiline": true}],
     //在数组开括号后和闭括号前强制换行
