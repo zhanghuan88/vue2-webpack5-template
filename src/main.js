@@ -1,10 +1,10 @@
-import Vue from 'vue';
-import App from './App';
-import store from "./store/index";
-import './styles/index.scss';
+import Vue from "vue";
+import App from "@/App";
+import store from "@/store/index";
+import "./styles/index.scss";
 
 const app = new Vue({
-    render: h => h(App),
-    store
+  render: (h) => h(App),
+  store,
 });
-app.$mount('#app');
+app.$mount("#app");

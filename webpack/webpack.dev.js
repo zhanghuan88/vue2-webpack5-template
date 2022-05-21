@@ -5,7 +5,6 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const {DefinePlugin} = require("webpack");
 const webpackCommonConfig = require("./webpack.common.js");
 
-
 //读取环境变量
 module.exports = merge(webpackCommonConfig, {
   mode: "development",
@@ -33,12 +32,10 @@ module.exports = merge(webpackCommonConfig, {
       extensions: ['js', 'json', 'vue'],
       files: 'src'
     })
-
   ],
   devServer: {
     port: "auto",
     hot: true,
-    compress: true,
     host: "localhost",
     historyApiFallback: true,//history路由错误问题
     client: {
@@ -48,7 +45,6 @@ module.exports = merge(webpackCommonConfig, {
         warnings: false
       }
     }
-
   },
   stats: 'errors-warnings'
 });
