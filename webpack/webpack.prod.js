@@ -1,18 +1,18 @@
-const {merge} = require("webpack-merge");
-const {readEnv, getConditionalLoader} = require('./utils');
+const { merge } = require("webpack-merge");
+const { readEnv, getConditionalLoader } = require("./utils");
 const config = readEnv("./.env.production");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const WebpackBar = require('webpackbar');
+const WebpackBar = require("webpackbar");
 const TerserPlugin = require("terser-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-const {DefinePlugin} = require("webpack");
+const { DefinePlugin } = require("webpack");
 const webpackCommonConfig = require("./webpack.common.js");
 
 //读取环境变量
 module.exports = merge(webpackCommonConfig, {
-  mode: 'production',
+  mode: "production",
   // devtool: "cheap-module-source-map",
   devtool: false,
   module: {
@@ -22,47 +22,51 @@ module.exports = merge(webpackCommonConfig, {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              sourceMap: false
-            }
+              sourceMap: false,
+            },
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              sourceMap: false
-            }
+              sourceMap: false,
+            },
           },
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             options: {
-              sourceMap: false
-            }
+              sourceMap: false,
+            },
           },
-          getConditionalLoader()
-        ]
-      }
-    ]
+          getConditionalLoader(),
+        ],
+      },
+    ],
   },
   plugins: [
     new DefinePlugin({
       BASE_URL: JSON.stringify("/"),
-      'process.env': config
+      "process.env": config,
     }),
     new MiniCssExtractPlugin({
-      filename: "css/[name]_[contenthash:8].css"
+      filename: "css/[name]_[contenthash:8].css",
     }),
     new CleanWebpackPlugin(),
     // 进度条
     new WebpackBar({
-      reporters: ['fancy', 'profile'],
+      reporters: ["fancy", "profile"],
       profile: true,
     }),
-    ...process.env.APP_GZIP === "ON" ? [new CompressionPlugin({
-      filename: "[path][base].gz",
-      threshold: 10240,
-      minRatio: 0.8
-    })] : []
+    ...(process.env.APP_GZIP === "ON"
+      ? [
+          new CompressionPlugin({
+            filename: "[path][base].gz",
+            threshold: 10240,
+            minRatio: 0.8,
+          }),
+        ]
+      : []),
   ],
   optimization: {
     moduleIds: "deterministic",
@@ -74,23 +78,22 @@ module.exports = merge(webpackCommonConfig, {
           preset: [
             "default",
             {
-              discardComments: {removeAll: true},
+              discardComments: { removeAll: true },
             },
           ],
-        }
+        },
       }),
       new TerserPlugin({
         terserOptions: {
           format: {
-            comments: false
-          }
+            comments: false,
+          },
         },
-        extractComments: false
-      })
-
+        extractComments: false,
+      }),
     ],
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
       minChunks: 3,
       maxAsyncRequests: 5,
       maxInitialRequests: 5,
@@ -103,12 +106,10 @@ module.exports = merge(webpackCommonConfig, {
         },
         main: {
           test: /src/,
-          name: 'main',
+          name: "main",
           enforce: true,
-        }
-      }
-    }
-
-  }
-
+        },
+      },
+    },
+  },
 });
