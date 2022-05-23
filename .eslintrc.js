@@ -1,5 +1,4 @@
 const { resolve } = require("./webpack/utils");
-const { env } = require("eslint-config-airbnb-base/rules/imports");
 
 module.exports = {
   env: {
