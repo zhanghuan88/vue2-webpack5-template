@@ -9,12 +9,12 @@ module.exports = {
     process: true,
     require: true,
   },
-  extends: ["plugin:vue/essential", "eslint-config-airbnb-base", "prettier"],
+  extends: ["plugin:vue/essential", "eslint-config-airbnb-base", "plugin:prettier/recommended"],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["vue"],
+  plugins: ["vue", "prettier"],
   rules: {
     //强制数组元素间出现换行
     "array-element-newline": ["error", { multiline: true }],
